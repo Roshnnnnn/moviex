@@ -3,9 +3,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
 import { useNavigate, useLocation } from "react-router-dom";
-
 import "./style.scss";
-
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import logo from "../../assets/movix-logo.svg";
 
@@ -70,6 +68,11 @@ const Header = () => {
     setMobileMenu(false);
   };
 
+  const handleLogin = () => {
+    navigate("/signup");
+    setMobileMenu(false);
+  };
+
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
@@ -85,6 +88,9 @@ const Header = () => {
           </li>
           <li className="menuItem">
             <HiOutlineSearch onClick={openSearch} />
+          </li>
+          <li className="menuItem" onClick={handleLogin}>
+            Login
           </li>
         </ul>
 
