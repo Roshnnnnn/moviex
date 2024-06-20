@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -8,7 +8,7 @@ import { fetchDataFromApi } from "../../utils/api";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
-import noResults from "../../assets/no-results.png";
+import noResultsImage from "../../assets/no-results.png";
 
 const SearchResult = () => {
   const [data, setData] = useState(null);
@@ -68,7 +68,7 @@ const SearchResult = () => {
                 loader={<Spinner />}
               >
                 {data?.results.map((item, index) => {
-                  if (item.media_type === "person") return;
+                  if (item.media_type === "person") return null;
                   return (
                     <MovieCard key={index} data={item} fromSearch={true} />
                   );
@@ -76,7 +76,14 @@ const SearchResult = () => {
               </InfiniteScroll>
             </>
           ) : (
-            <span className="resultNotFound">Sorry, Results not found!</span>
+            <div className="noResultsContainer">
+              <img
+                src={noResultsImage}
+                alt="No results found"
+                className="noResultsImage"
+              />
+              <span className="resultNotFound">Sorry, Results not found!</span>
+            </div>
           )}
         </ContentWrapper>
       )}
