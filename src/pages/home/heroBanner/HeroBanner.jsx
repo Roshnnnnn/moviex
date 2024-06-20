@@ -5,6 +5,7 @@ import useFetch from "../../../hooks/useFetch";
 import { useSelector } from "react-redux";
 import Img from "../../../components/lazyLoadImage/Img";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
+import Header from "../../../components/header/Header";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
@@ -30,33 +31,35 @@ const HeroBanner = () => {
     }
   };
   return (
-    <div className="heroBanner">
-      {!loading && (
-        <div className="backdrop-img">
-          <Img src={background} />
-        </div>
-      )}
-
-      <div className="opacity-layer"></div>
-
-      <ContentWrapper>
-        <div className="heroBannerContent">
-          <span className="title">Welcome</span>
-          <span className="subTitle">
-            Millions of TV shows and people to discover. Explore now.
-          </span>
-          <div className="searchInput">
-            <input
-              type="text"
-              placeholder="Search your favourite"
-              onKeyUp={searchQueryHandler}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <button>Search</button>
+    <>
+      <Header />
+      <div className="heroBanner">
+        {!loading && (
+          <div className="backdrop-img">
+            <Img src={background} />
           </div>
-        </div>
-      </ContentWrapper>
-    </div>
+        )}
+
+        <div className="opacity-layer"></div>
+        <ContentWrapper>
+          <div className="heroBannerContent">
+            <span className="title">Welcome</span>
+            <span className="subTitle">
+              Millions of TV shows and people to discover. Explore now.
+            </span>
+            <div className="searchInput">
+              <input
+                type="text"
+                placeholder="Search your favourite"
+                onKeyUp={searchQueryHandler}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <button>Search</button>
+            </div>
+          </div>
+        </ContentWrapper>
+      </div>
+    </>
   );
 };
 
