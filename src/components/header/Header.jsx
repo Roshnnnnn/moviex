@@ -68,11 +68,6 @@ const Header = () => {
     setMobileMenu(false);
   };
 
-  const handleLogin = () => {
-    navigate("/signup");
-    setMobileMenu(false);
-  };
-
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
@@ -88,9 +83,6 @@ const Header = () => {
           </li>
           <li className="menuItem">
             <HiOutlineSearch onClick={openSearch} />
-          </li>
-          <li className="menuItem" onClick={handleLogin}>
-            Login
           </li>
         </ul>
 
